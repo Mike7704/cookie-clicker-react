@@ -1,0 +1,123 @@
+.store {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  font-size: 32px;
+  padding: 20px 10% 40px 10%;
+}
+
+.store h2 {
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  padding-bottom: 26px;
+}
+
+.store .item-heading,
+.store .item {
+  display: flex;
+  align-items: center;
+  background-color: #153e58af;
+  font-size: 22px;
+}
+
+.store .item-heading div,
+.store .item div,
+.store .item button {
+  flex: 1;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.store .item-heading div {
+  background-color: #1d587caf;
+}
+
+.store .item-heading div:last-child,
+.store .item-heading div:nth-child(2),
+.store .item div:nth-child(2) {
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  border-right: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.store .item-heading div:first-child,
+.store .item div:first-child {
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.store .item:last-child {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.store .item button {
+  background-color: transparent;
+  border: none;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  border-right: 2px solid rgba(255, 255, 255, 0.5);
+  font: inherit;
+  color: white;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  padding: 6.8px 15px 6.8px 15px;
+}
+
+.store .item button:hover {
+  background-color: #cfaf78;
+  color: #5a352b;
+  text-shadow: none;
+}
+
+.store .item button img {
+  display: inline-block;
+  width: 39px;
+  height: auto;
+  padding-right: 4px;
+  vertical-align: middle;
+}
+
+.store .item button #cost {
+  display: inline-block;
+}
+
+/* Resize elements for smaller screens */
+@media screen and (max-width: 600px) {
+  .store {
+    font-size: 24px;
+    padding: 20px 2% 40px 2%;
+  }
+
+  .store .item-heading,
+  .store .item {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .store .item-heading div,
+  .store .item div,
+  .store .item button {
+    white-space: wrap;
+    overflow: auto;
+    text-overflow: unset;
+    height: 40px;
+    padding: 10px;
+  }
+
+  .store .item button {
+    white-space: wrap;
+    overflow: auto;
+    text-overflow: unset;
+    padding: 6.8px 10px 6.8px 10px;
+    height: 62px;
+  }
+
+  .store .item button img {
+    width: 30px;
+    height: auto;
+  }
+}

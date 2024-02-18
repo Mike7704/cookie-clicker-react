@@ -1,0 +1,26 @@
+.counter {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  font-size: 40px;
+  text-align: center;
+  padding: 20px;
+}
+
+.counter #cookie-cps {
+  font-size: 25px;
+  padding-top: 12px;
+}
+
+/* Resize elements for smaller screens */
+@media screen and (max-width: 600px) {
+  .counter {
+    font-size: 32px;
+  }
+
+  .counter #cookie-cps {
+    font-size: 18px;
+  }
+}

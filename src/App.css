@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Lemon");
+
+body {
+  background-image: url("./assets/images/background.jpg");
+  font-family: "Lemon";
+  color: white;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  font-size: 53px;
+  text-align: center;
+  padding: 20px;
+  padding-bottom: 28px;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+footer p {
+  padding: 6px;
+}
+
+footer #reset {
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12%;
+  font: inherit;
+  color: rgba(255, 255, 255, 0.5);
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+footer #reset:hover {
+  background-color: #cfaf78;
+  color: #5a352b;
+  text-shadow: none;
+}
+
+/* Resize elements for smaller screens */
+@media screen and (max-width: 600px) {
+  header {
+    font-size: 38px;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+}

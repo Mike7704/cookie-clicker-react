@@ -1,0 +1,33 @@
+.cookie {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.cookie #cookie-button {
+  background-color: transparent;
+  border-color: transparent;
+  background-image: url("../assets/images/cookie-large.png");
+  background-size: cover;
+  border-radius: 50%;
+  width: 512px;
+  height: 512px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cookie #cookie-button:hover {
+  transform: scale(1.06);
+}
+
+.cookie #cookie-button:active {
+  transform: scale(1);
+}
+
+/* Resize elements for smaller screens */
+@media screen and (max-width: 600px) {
+  .cookie #cookie-button {
+    width: 320px;
+    height: 320px;
+  }
+}
