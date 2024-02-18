@@ -7,6 +7,15 @@ import Cookie from "./components/Cookie";
 import Store from "./components/Store";
 import Footer from "./components/Footer";
 
+const clickSound = getAudio();
+function getAudio() {
+  try {
+    return new Audio("./src/assets/sounds/click.mp3");
+  } catch (error) {
+    return new Audio("./assets/sounds/click.mp3");
+  }
+}
+
 let clicksPerSecond = 0;
 
 function App() {
@@ -16,8 +25,6 @@ function App() {
   const [itemsCPS, setItemsCPS] = useState(0);
   const [totalCookiesProduced, setTotalCookiesProduced] = useState(parseInt(localStorage.getItem("totalCookiesProduced")) || 0);
   const [totalClicks, setTotalClicks] = useState(parseInt(localStorage.getItem("totalClicks")) || 0);
-
-  const clickSound = new Audio("./src/assets/sounds/click.mp3");
 
   // Increase cookies when cookie button is clicked
   const cookieClicked = () => {
