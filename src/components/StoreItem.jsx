@@ -5,7 +5,13 @@ function StoreItem({ owned, name, production, cost }) {
       <div>{name}</div>
       <div>+{production} cps</div>
       <button>
-        <img src="../src/assets/images/cookie-small.png" alt="Cookie Emoji" />
+        <img
+          src="./src/assets/images/cookie-small.png"
+          onError={(e) => {
+            e.target.src = "./assets/images/cookie-small.png";
+          }}
+          alt="Cookie Emoji"
+        />
         <p id="cost">{cost}</p>
       </button>
     </div>
