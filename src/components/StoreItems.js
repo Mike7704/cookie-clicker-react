@@ -1,4 +1,4 @@
-export const storeItems = [
+export const storeItems = JSON.parse(localStorage.getItem("storeItems")) || [
   { id: 1, owned: 0, name: "Grandma", production: 1, cost: 10 },
   { id: 2, owned: 0, name: "Oven", production: 5, cost: 50 },
   { id: 3, owned: 0, name: "Baker", production: 20, cost: 200 },

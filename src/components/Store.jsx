@@ -2,11 +2,22 @@ import "./Store.css";
 import { storeItems } from "./StoreItems";
 import StoreItem from "./StoreItem";
 
-function Store({ cookies, setCookies }) {
-  const purchaseItem = (itemCost) => {
+function Store({ cookies, setCookies, clickPower, setClickPower }) {
+  const purchaseItem = (item) => {
     console.log(cookies);
-    if (cookies >= itemCost) {
-      setCookies(cookies - itemCost);
+    if (cookies >= item.cost) {
+      setCookies(cookies - item.cost);
+      item.owned++;
+      item.cost = Math.floor(item.cost * 1.2);
+
+      // Is click power item?
+      if (item.name === "Double Click Power") {
+        // Double click power
+        item.production *= 2;
+        setClickPower(item.production);
+        // Increase cost further
+        item.cost = Math.floor(item.cost + item.owned * clickPower * 3);
+      }
     } else {
       alert("Not enough cookies!");
     }
@@ -28,7 +39,7 @@ function Store({ cookies, setCookies }) {
           name={item.name}
           production={item.production}
           cost={item.cost}
-          purchaseItem={() => purchaseItem(item.cost, item.owned)}
+          purchaseItem={() => purchaseItem(item)}
         />
       ))}
     </div>
