@@ -10,10 +10,7 @@ import { storeItems } from "./components/StoreItems";
 import clickSoundFile from "./assets/sounds/click.mp3";
 
 // Start/base costs of each item to reset to
-let itemsStartCost = [];
-for (let item of storeItems) {
-  itemsStartCost.push(item.cost);
-}
+let itemsStartCost = [10, 50, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 50];
 
 function App() {
   const [cookieCounter, setCookieCounter] = useState(parseInt(localStorage.getItem("cookies")) || 0);
