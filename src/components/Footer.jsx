@@ -1,8 +1,8 @@
 function Footer({ totalCookiesProduced, totalClicks, resetGame }) {
   return (
     <footer>
-      <p id="total-cookies-produced">Total Cookies Produced: {totalCookiesProduced}</p>
-      <p id="total-clicks">Total Clicks: {totalClicks}</p>
+      <p id="total-cookies-produced">Total Cookies Produced: {totalCookiesProduced.toLocaleString()}</p>
+      <p id="total-clicks">Total Clicks: {totalClicks.toLocaleString()}</p>
       <button id="reset" onClick={resetGame}>
         Reset
       </button>

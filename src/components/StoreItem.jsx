@@ -5,10 +5,10 @@ function StoreItem({ owned, name, production, cost, purchaseItem }) {
     <div className="item">
       <div id="owned">{owned}</div>
       <div>{name}</div>
-      <div>+{production} cps</div>
+      <div>+{production.toLocaleString()} cps</div>
       <button onClick={purchaseItem}>
         <img src={cookieImage} alt="Cookie Emoji" />
-        <p id="cost">{cost}</p>
+        <p id="cost">{cost.toLocaleString()}</p>
       </button>
     </div>
   );
