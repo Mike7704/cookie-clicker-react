@@ -6,17 +6,7 @@ import Counter from "./components/Counter";
 import Cookie from "./components/Cookie";
 import Store from "./components/Store";
 import Footer from "./components/Footer";
-
-const clickSound = getAudio();
-function getAudio() {
-  try {
-    return new Audio("./src/assets/sounds/click.mp3");
-  } catch (error) {
-    return new Audio("./assets/sounds/click.mp3");
-  }
-}
-
-let clicksPerSecond = 0;
+import clickSoundFile from "./assets/sounds/click.mp3";
 
 function App() {
   const [cookieCounter, setCookieCounter] = useState(parseInt(localStorage.getItem("cookies")) || 0);
@@ -25,11 +15,14 @@ function App() {
   const [itemsCPS, setItemsCPS] = useState(0);
   const [totalCookiesProduced, setTotalCookiesProduced] = useState(parseInt(localStorage.getItem("totalCookiesProduced")) || 0);
   const [totalClicks, setTotalClicks] = useState(parseInt(localStorage.getItem("totalClicks")) || 0);
+  const [clicksPerSecond, setClicksPerSecond] = useState(0);
+
+  const clickSound = new Audio(clickSoundFile);
 
   // Increase cookies when cookie button is clicked
   const cookieClicked = () => {
     setCookieCounter((prevCount) => prevCount + clickPower); // Increase cookies by click power
-    clicksPerSecond++; // Track number of clicks for CPS
+    setClicksPerSecond((prevCount) => prevCount + 1); // Track number of clicks for CPS
     setTotalClicks((prevCount) => prevCount + 1); // Track number of total cookie clicks
     clickSound.play(); // Play click audio on click
   };
@@ -37,7 +30,7 @@ function App() {
   // Update cookie counter
   const updateCookieCounter = () => {
     setCookieCounter((prevCount) => prevCount + itemsCPS); // Add cookies produced by items
-    setTotalCookiesProduced(totalCookiesProduced + cookieCPS); // Update total cookies produced
+    setTotalCookiesProduced((prevCount) => prevCount + cookieCPS); // Update total cookies produced
   };
 
   // Calulate CPS produced
@@ -57,7 +50,7 @@ function App() {
     cps += clicksPerSecond * clickPower; // Add CPS from clicks
     setCookieCPS(cps); // Add CPS from items and clicks
     setItemsCPS(cpsFromItems); // Set item CPS
-    clicksPerSecond = 0; // Reset clicks every second to be recounted
+    setClicksPerSecond(0); // Reset clicksPerSecond
   };
 
   // Reset game data
@@ -86,7 +79,6 @@ function App() {
     const interval = setInterval(() => {
       updateCookieCPS();
       updateCookieCounter();
-      console.log("test");
     }, 1000);
 
     // Return the callback function (to clean up function)
@@ -97,6 +89,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("cookies", cookieCounter.toString());
     localStorage.setItem("clickPower", clickPower.toString());
+    //localStorage.setItem("items", JSON.stringify(items));
     localStorage.setItem("totalCookiesProduced", totalCookiesProduced.toString());
     localStorage.setItem("totalClicks", totalClicks.toString());
   }, [cookieCounter, clickPower, totalCookiesProduced, totalClicks]);
@@ -106,7 +99,7 @@ function App() {
       <Header />
       <Counter cookieCounter={cookieCounter} cookieCPS={cookieCPS} />
       <Cookie clickCookie={cookieClicked} />
-      <Store />
+      <Store cookies={cookieCounter} setCookies={setCookieCounter} />
       <Footer totalCookiesProduced={totalCookiesProduced} totalClicks={totalClicks} resetGame={reset} />
     </>
   );
